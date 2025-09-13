@@ -3,20 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yiadh - Portfolio Développeur Web</title>
+    <title>Guide Personnalisation - Portfolio Yiadh</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #6f42c1;
-            --primary-dark: #5a32a3;
             --secondary: #2c3e50;
             --accent: #ff6b6b;
             --light: #f8f9fa;
             --dark: #343a40;
-            --text: #2c3e50;
-            --text-light: #6c757d;
             --success: #2ecc71;
-            --transition: all 0.3s ease;
+            --warning: #f39c12;
+            --danger: #e74c3c;
         }
         
         * {
@@ -26,825 +24,489 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-        html {
-            scroll-behavior: smooth;
-        }
-        
         body {
-            background-color: var(--light);
-            color: var(--text);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #2c3e50;
             line-height: 1.6;
-        }
-        
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        ul {
-            list-style: none;
+            padding: 20px;
+            min-height: 100vh;
         }
         
         .container {
-            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
         }
         
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            background: var(--primary);
-            color: white;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-        
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-            padding-bottom: 15px;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--primary);
-        }
-        
-        /* Header et Navigation */
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 15px 0;
-            transition: var(--transition);
-        }
-        
-        header.scrolled {
-            padding: 10px 0;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .nav-links a {
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: var(--transition);
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .menu-btn {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--dark);
-        }
-        
-        /* Hero Section */
-        .hero {
-            padding: 150px 0 100px;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            color: var(--secondary);
-            animation: fadeInUp 1s ease;
-        }
-        
-        .hero-content h1 span {
-            color: var(--primary);
-        }
-        
-        .hero-content p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            color: var(--text-light);
-            animation: fadeInUp 1s ease 0.2s forwards;
-            opacity: 0;
-        }
-        
-        .hero-btns {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-            animation: fadeInUp 1s ease 0.4s forwards;
-            opacity: 0;
-        }
-        
-        /* About Section */
-        .about {
-            padding: 100px 0;
-            background: white;
-        }
-        
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-        
-        .about-img {
-            flex: 1;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-        
-        .about-img::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--primary);
-            opacity: 0.1;
-            z-index: 1;
-        }
-        
-        .about-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: var(--transition);
-        }
-        
-        .about-img:hover img {
-            transform: scale(1.05);
-        }
-        
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--secondary);
-        }
-        
-        .about-text p {
-            margin-bottom: 15px;
-            color: var(--text-light);
-        }
-        
-        /* Skills Section */
-        .skills {
-            padding: 100px 0;
-            background: #f8fafc;
-        }
-        
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .skill-item {
-            background: white;
+            background: var(--secondary);
+            color: white;
             padding: 30px;
-            border-radius: 15px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
         }
         
-        .skill-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: var(--primary);
-            transition: var(--transition);
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
         }
         
-        .skill-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
         }
         
-        .skill-item:hover::before {
-            width: 100%;
-            opacity: 0.05;
-        }
-        
-        .skill-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .skill-item h3 {
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .skill-item p {
-            color: var(--text-light);
-            position: relative;
-            z-index: 2;
-        }
-        
-        /* Projects Section */
-        .projects {
-            padding: 100px 0;
-            background: white;
-        }
-        
-        .projects-grid {
+        .content {
+            padding: 30px;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 30px;
         }
         
-        .project-card {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            background: white;
+        @media (max-width: 900px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
         }
         
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        .section {
+            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: 10px;
+            background: var(--light);
+            border-left: 4px solid var(--primary);
         }
         
-        .project-img {
-            height: 200px;
-            overflow: hidden;
-            position: relative;
+        h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
-        .project-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
+        h3 {
+            margin: 20px 0 10px;
+            color: var(--secondary);
         }
         
-        .project-card:hover .project-img img {
-            transform: scale(1.1);
-        }
-        
-        .project-info {
+        .step {
+            margin-bottom: 20px;
             padding: 20px;
             background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
         }
         
-        .project-info h3 {
-            margin-bottom: 10px;
-            font-size: 1.3rem;
-            color: var(--secondary);
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
         }
         
-        .project-info p {
-            color: var(--text-light);
-            margin-bottom: 15px;
+        code {
+            background: #24292e;
+            color: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            display: block;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
         }
         
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+        .editable {
+            background: #fff4e6;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--warning);
             margin: 15px 0;
         }
         
-        .project-tag {
-            background: #e0f2fe;
-            color: var(--primary);
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-        
-        /* Contact Section */
-        .contact {
-            padding: 100px 0;
-            background: #f8fafc;
-        }
-        
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
-        }
-        
-        .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--secondary);
-        }
-        
-        .contact-info p {
-            color: var(--text-light);
-            margin-bottom: 30px;
-        }
-        
-        .contact-details {
-            margin-top: 30px;
-        }
-        
-        .contact-details div {
+        .editable h4 {
+            color: var(--warning);
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
+            gap: 8px;
         }
         
-        .contact-details i {
-            font-size: 1.2rem;
-            color: var(--primary);
-            margin-right: 15px;
-            width: 20px;
+        .color-palette {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
         }
         
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
+        .color-item {
+            width: 80px;
+            height: 80px;
             border-radius: 8px;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-        
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            border-color: var(--primary);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(111, 66, 193, 0.1);
-        }
-        
-        .contact-form textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--secondary);
-            color: white;
-            padding: 50px 0 20px;
-            text-align: center;
-        }
-        
-        .footer-content {
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-        
-        .social-links {
-            display: flex;
             justify-content: center;
-            gap: 20px;
-            margin: 30px 0;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.2s;
         }
         
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            transition: var(--transition);
+        .color-item:hover {
+            transform: scale(1.05);
         }
         
-        .social-links a:hover {
+        .button {
+            display: inline-block;
             background: var(--primary);
-            transform: translateY(-5px);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
         }
         
-        .copyright {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
+        .button:hover {
+            background: #5a32a3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .checklist {
+            list-style-type: none;
+            margin: 15px 0;
         }
         
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .about-img, .about-text {
-                flex: none;
-                width: 100%;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
+        .checklist li {
+            margin-bottom: 10px;
+            padding-left: 30px;
+            position: relative;
         }
         
-        @media (max-width: 768px) {
-            .menu-btn {
-                display: block;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: white;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 40px;
-                transition: var(--transition);
-                z-index: 1000;
-            }
-            
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero-btns {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
+        .checklist li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: var(--light);
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .tab-container {
+            margin-top: 20px;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            padding: 12px 20px;
+            cursor: pointer;
+            background: #f1f1f1;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .tab.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .code-explanation {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 0.9rem;
+        }
+        
+        .visual-guide {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .visual-guide img {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .caption {
+            font-style: italic;
+            margin-top: 8px;
+            color: #6c757d;
         }
     </style>
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header id="header">
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">Yiadh</a>
-                <ul class="nav-links">
-                    <li><a href="#home">Accueil</a></li>
-                    <li><a href="#about">À propos</a></li>
-                    <li><a href="#skills">Compétences</a></li>
-                    <li><a href="#projects">Projets</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="menu-btn">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Bonjour, je suis <span>Yiadh</span></h1>
-                <p>Développeur web passionné par la création d'expériences numériques exceptionnelles. Je transforme vos idées en réalité avec du code créatif et moderne.</p>
-                <div class="hero-btns">
-                    <a href="#projects" class="btn">Voir mes projets</a>
-                    <a href="#contact" class="btn btn-outline">Me contacter</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <h2 class="section-title">À propos de moi</h2>
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Photo de Yiadh">
-                </div>
-                <div class="about-text">
-                    <h2>Développeur Web Fullstack</h2>
-                    <p>Je suis un développeur web avec 3 ans d'expérience dans la création de sites web et d'applications modernes et responsives. Passionné par les nouvelles technologies, je me spécialise dans le développement front-end et back-end.</p>
-                    <p>J'aime résoudre des problèmes complexes et créer des solutions élégantes qui améliorent l'expérience utilisateur. Mon objectif est de toujours livrer un code propre, efficace et maintenable.</p>
-                    <p>Lorsque je ne code pas, vous me trouverez en train de lire des articles techniques, de suivre des tutoriels ou d'explorer de nouveaux frameworks et langages.</p>
-                    <a href="#contact" class="btn">Discutons de votre projet</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="skills" id="skills">
-        <div class="container">
-            <h2 class="section-title">Mes compétences</h2>
-            <div class="skills-container">
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fab fa-html5"></i>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-paint-brush"></i> Guide de Personnalisation</h1>
+            <p>Comment éditer et personnaliser votre portfolio GitHub Pages</p>
+        </header>
+        
+        <div class="content">
+            <div>
+                <div class="section">
+                    <h2><i class="fas fa-edit"></i> Édition de Base</h2>
+                    
+                    <div class="step">
+                        <h3><span class="step-number">1</span> Accéder au fichier</h3>
+                        <p>Pour modifier votre site :</p>
+                        <ol>
+                            <li>Allez sur <a href="https://github.com/Yiadh/Yiadh.github.io" target="_blank">votre repository GitHub</a></li>
+                            <li>Cliquez sur le fichier <code>index.html</code></li>
+                            <li>Cliquez sur l'icône <i class="fas fa-pencil-alt"></i> (éditer)</li>
+                        </ol>
                     </div>
-                    <h3>HTML5</h3>
-                    <p>Création de structures sémantiques et accessibles pour le web moderne.</p>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fab fa-css3-alt"></i>
-                    </div>
-                    <h3>CSS3</h3>
-                    <p>Design responsive et animations fluides pour une expérience utilisateur optimale.</p>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fab fa-js"></i>
-                    </div>
-                    <h3>JavaScript</h3>
-                    <p>Développement d'applications interactives et dynamiques avec les technologies modernes.</p>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fab fa-react"></i>
-                    </div>
-                    <h3>React</h3>
-                    <p>Création d'interfaces utilisateur complexes avec React et son écosystème.</p>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fab fa-node-js"></i>
-                    </div>
-                    <h3>Node.js</h3>
-                    <p>Développement d'API RESTful et d'applications serveur performantes.</p>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>Bases de données</h3>
-                    <p>Conception et optimisation de bases de données SQL et NoSQL.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-        <div class="container">
-            <h2 class="section-title">Mes projets</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80" alt="Projet E-commerce">
-                    </div>
-                    <div class="project-info">
-                        <h3>Application E-commerce</h3>
-                        <p>Plateforme complète de vente en ligne avec panier, paiement et administration.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">React</span>
-                            <span class="project-tag">Node.js</span>
-                            <span class="project-tag">MongoDB</span>
+                    
+                    <div class="step">
+                        <h3><span class="step-number">2</span> Modifier le contenu</h3>
+                        <p>Recherchez ces sections dans le code :</p>
+                        
+                        <div class="editable">
+                            <h4><i class="fas fa-user"></i> Section À propos</h4>
+                            <code>&lt;h2>Développeur Web Fullstack&lt;/h2>
+&lt;p>Je suis un développeur web avec 3 ans d'expérience...&lt;/p></code>
                         </div>
-                        <a href="#" class="btn">Voir le projet</a>
+                        
+                        <div class="editable">
+                            <h4><i class="fas fa-envelope"></i> Coordonnées</h4>
+                            <code>&lt;span>contact@yiadh.fr&lt;/span>
+&lt;span>+33 6 12 34 56 78&lt;/span></code>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <h3><span class="step-number">3</span> Sauvegarder les modifications</h3>
+                        <p>Après avoir fait vos modifications :</p>
+                        <ol>
+                            <li>Descendez en bas de la page</li>
+                            <li>Ajoutez un titre descriptif pour votre modification</li>
+                            <li>Cliquez sur le bouton <strong>"Commit changes"</strong></li>
+                            <li>Attendez 1-2 minutes pour que le site se mette à jour</li>
+                        </ol>
                     </div>
                 </div>
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Projet Réservation">
-                    </div>
-                    <div class="project-info">
-                        <h3>Plateforme de réservation</h3>
-                        <p>Système de réservation en temps réel avec calendrier et notifications.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Vue.js</span>
-                            <span class="project-tag">Express</span>
-                            <span class="project-tag">MySQL</span>
+                
+                <div class="section">
+                    <h2><i class="fas fa-palette"></i> Personnalisation Avancée</h2>
+                    
+                    <h3>Changer les couleurs</h3>
+                    <p>Modifiez les variables CSS en haut du fichier :</p>
+                    
+                    <div class="color-palette">
+                        <div class="color-item" style="background: #6f42c1;" onclick="updateColor('#6f42c1', '--primary')">
+                            #6f42c1
+                            <small>Primaire</small>
                         </div>
-                        <a href="#" class="btn">Voir le projet</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1115&q=80" alt="Projet Dashboard">
-                    </div>
-                    <div class="project-info">
-                        <h3>Dashboard Analytique</h3>
-                        <p>Visualisation de données complexes avec graphiques interactifs et filtres.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">React</span>
-                            <span class="project-tag">D3.js</span>
-                            <span class="project-tag">Python</span>
+                        <div class="color-item" style="background: #2c3e50;" onclick="updateColor('#2c3e50', '--secondary')">
+                            #2c3e50
+                            <small>Secondaire</small>
                         </div>
-                        <a href="#" class="btn">Voir le projet</a>
+                        <div class="color-item" style="background: #ff6b6b;" onclick="updateColor('#ff6b6b', '--accent')">
+                            #ff6b6b
+                            <small>Accent</small>
+                        </div>
+                        <div class="color-item" style="background: #2ecc71;" onclick="updateColor('#2ecc71', '--success')">
+                            #2ecc71
+                            <small>Succès</small>
+                        </div>
+                    </div>
+                    
+                    <code>:root {
+  --primary: #6f42c1;    /* Couleur principale */
+  --secondary: #2c3e50;  /* Couleur secondaire */
+  --accent: #ff6b6b;     /* Couleur d'accent */
+  --success: #2ecc71;    /* Couleur de succès */
+}</code>
+
+                    <h3>Modifier la photo de profil</h3>
+                    <p>Remplacez l'URL dans la section À propos :</p>
+                    <code>&lt;img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3..." 
+     alt="Photo de Yiadh"></code>
+                    
+                    <div class="code-explanation">
+                        <p><strong>Conseil :</strong> Utilisez <a href="https://unsplash.com" target="_blank">Unsplash</a> pour trouver des images libres de droits, ou uploader la vôtre sur un service comme <a href="https://imgur.com" target="_blank">Imgur</a>.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2 class="section-title">Me contacter</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Discutons de votre projet</h3>
-                    <p>Je suis toujours ouvert à discuter de nouvelles opportunités et idées de projets. N'hésitez pas à me contacter pour toute question ou collaboration.</p>
-                    <div class="contact-details">
-                        <div>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Paris, France</span>
+            
+            <div>
+                <div class="section">
+                    <h2><i class="fas fa-cogs"></i> Sections à Personnaliser</h2>
+                    
+                    <div class="tab-container">
+                        <div class="tabs">
+                            <div class="tab active" data-tab="hero">Héro</div>
+                            <div class="tab" data-tab="about">À propos</div>
+                            <div class="tab" data-tab="skills">Compétences</div>
+                            <div class="tab" data-tab="projects">Projets</div>
+                            <div class="tab" data-tab="contact">Contact</div>
                         </div>
-                        <div>
-                            <i class="fas fa-envelope"></i>
-                            <span>contact@yiadh.fr</span>
+                        
+                        <div class="tab-content active" id="hero">
+                            <p>Section d'introduction en haut de page :</p>
+                            <code>&lt;h1>Bonjour, je suis &lt;span>Yiadh&lt;/span>&lt;/h1>
+&lt;p>Développeur web passionné par la création...&lt;/p></code>
                         </div>
-                        <div>
-                            <i class="fas fa-phone"></i>
-                            <span>+33 6 12 34 56 78</span>
+                        
+                        <div class="tab-content" id="about">
+                            <p>Section de présentation personnelle :</p>
+                            <code>&lt;h2>Développeur Web Fullstack&lt;/h2>
+&lt;p>Je suis un développeur web avec 3 ans d'expérience...&lt;/p>
+&lt;p>J'aime résoudre des problèmes complexes...&lt;/p></code>
+                        </div>
+                        
+                        <div class="tab-content" id="skills">
+                            <p>Liste de vos compétences techniques :</p>
+                            <code>&lt;div class="skill-item">
+  &lt;div class="skill-icon">
+    &lt;i class="fab fa-html5">&lt;/i>
+  &lt;/div>
+  &lt;h3>HTML5&lt;/h3>
+  &lt;p>Création de structures sémantiques...&lt;/p>
+&lt;/div></code>
+                        </div>
+                        
+                        <div class="tab-content" id="projects">
+                            <p>Présentation de vos projets :</p>
+                            <code>&lt;div class="project-card">
+  &lt;h3>Application E-commerce&lt;/h3>
+  &lt;p>Plateforme complète de vente en ligne...&lt;/p>
+  &lt;div class="project-tags">
+    &lt;span class="project-tag">React&lt;/span>
+    &lt;span class="project-tag">Node.js&lt;/span>
+  &lt;/div>
+&lt;/div></code>
+                        </div>
+                        
+                        <div class="tab-content" id="contact">
+                            <p>Vos informations de contact :</p>
+                            <code>&lt;div>
+  &lt;i class="fas fa-envelope">&lt;/i>
+  &lt;span>contact@yiadh.fr&lt;/span>
+&lt;/div>
+&lt;div>
+  &lt;i class="fas fa-phone">&lt;/i>
+  &lt;span>+33 6 12 34 56 78&lt;/span>
+&lt;/div></code>
                         </div>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <input type="text" placeholder="Votre nom" required>
-                        <input type="email" placeholder="Votre email" required>
-                        <input type="text" placeholder="Sujet" required>
-                        <textarea placeholder="Votre message" required></textarea>
-                        <button type="submit" class="btn">Envoyer le message</button>
-                    </form>
+                
+                <div class="section">
+                    <h2><i class="fas fa-rocket"></i> Ajouter des Fonctionnalités</h2>
+                    
+                    <h3>Intégrer des réseaux sociaux</h3>
+                    <p>Modifiez la section footer :</p>
+                    <code>&lt;div class="social-links">
+  &lt;a href="https://github.com/Yiadh" target="_blank">
+    &lt;i class="fab fa-github">&lt;/i>
+  &lt;/a>
+  &lt;a href="https://linkedin.com/in/yiadh" target="_blank">
+    &lt;i class="fab fa-linkedin">&lt;/i>
+  &lt;/a>
+&lt;/div></code>
+                    
+                    <h3>Ajouter un formulaire de contact fonctionnel</h3>
+                    <p>Utilisez un service comme <a href="https://formspree.io" target="_blank">Formspree</a> ou <a href="https://getform.io" target="_blank">Getform</a> pour traiter les soumissions de formulaire.</p>
+                    
+                    <h3>Ajouter un domaine personnalisé</h3>
+                    <p>Procurez-vous un nom de domaine et suivez le <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site" target="_blank">guide officiel GitHub</a> pour l'ajouter à votre site.</p>
+                    
+                    <a href="https://github.com/Yiadh/Yiadh.github.io" class="button" target="_blank">
+                        <i class="fab fa-github"></i> Commencer à éditer
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="logo">Yiadh</div>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-dribbble"></i></a>
-                </div>
-                <div class="copyright">
-                    <p>&copy; 2023 Yiadh. Tous droits réservés.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+        
+        <footer>
+            <p>© 2023 - Guide de personnalisation pour Yiadh.github.io</p>
+            <p>Retrouvez votre site à <a href="https://yiadh.github.io" target="_blank">https://yiadh.github.io</a></p>
+        </footer>
+    </div>
 
     <script>
-        // Menu mobile
-        const menuBtn = document.querySelector('.menu-btn');
-        const navLinks = document.querySelector('.nav-links');
-        const header = document.getElementById('header');
-        
-        menuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            menuBtn.querySelector('i').classList.toggle('fa-bars');
-            menuBtn.querySelector('i').classList.toggle('fa-times');
-        });
-        
-        // Fermer le menu en cliquant sur un lien
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                menuBtn.querySelector('i').classList.add('fa-bars');
-                menuBtn.querySelector('i').classList.remove('fa-times');
+        // Gestion des onglets
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Désactiver tous les onglets
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Activer l'onglet cliqué
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
             });
         });
         
-        // Changement de style du header au scroll
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+        // Fonction pour mettre à jour les couleurs
+        function updateColor(color, variable) {
+            alert(`Pour changer la couleur ${variable} :\n\nRemplacez dans le code :\n\n--${variable}: #xxxxxx;\n\nPar :\n\n--${variable}: ${color};`);
+        }
         
-        // Animation au défilement
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
+        // Ajouter un effet de copie pour les codes
+        document.querySelectorAll('code').forEach(codeBlock => {
+            codeBlock.addEventListener('click', () => {
+                const textArea = document.createElement('textarea');
+                textArea.value = codeBlock.textContent;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                // Animation de confirmation
+                const originalText = codeBlock.textContent;
+                codeBlock.textContent = '✓ Copié !';
+                codeBlock.style.backgroundColor = '#2ecc71';
+                
+                setTimeout(() => {
+                    codeBlock.textContent = originalText;
+                    codeBlock.style.backgroundColor = '#24292e';
+                }, 1500);
             });
-        }, observerOptions);
-        
-        document.querySelectorAll('.skill-item, .project-card').forEach(item => {
-            observer.observe(item);
-        });
-        
-        // Formulaire de contact
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Merci pour votre message ! Je vous répondrai très rapidement.');
-            contactForm.reset();
         });
     </script>
 </body>
