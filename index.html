@@ -849,3 +849,479 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personnalisation - Portfolio Yiadh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6f42c1;
+            --primary-dark: #5a32a3;
+            --secondary: #2c3e50;
+            --accent: #ff6b6b;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+        
+        header {
+            background: var(--secondary);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .content {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        @media (max-width: 900px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: 10px;
+            background: var(--light);
+            border-left: 4px solid var(--primary);
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h3 {
+            margin: 20px 0 10px;
+            color: var(--secondary);
+        }
+        
+        .step {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        code {
+            background: #24292e;
+            color: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            display: block;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            position: relative;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        
+        .editable {
+            background: #fff4e6;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--warning);
+            margin: 15px 0;
+        }
+        
+        .editable h4 {
+            color: var(--warning);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .color-palette {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        
+        .color-item {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .color-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .button {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .button:hover {
+            background: #5a32a3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .checklist {
+            list-style-type: none;
+            margin: 15px 0;
+        }
+        
+        .checklist li {
+            margin-bottom: 10px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .checklist li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: var(--light);
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .tab-container {
+            margin-top: 20px;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            padding: 12px 20px;
+            cursor: pointer;
+            background: #f1f1f1;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .tab.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .code-explanation {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 0.9rem;
+        }
+        
+        .visual-guide {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .visual-guide img {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .caption {
+            font-style: italic;
+            margin-top: 8px;
+            color: #6c757d;
+        }
+        
+        .customization-preview {
+            border: 2px dashed var(--primary);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            background: #fafafa;
+        }
+        
+        .theme-selector {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        
+        .theme-option {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        
+        .theme-option:hover {
+            transform: scale(1.05);
+        }
+        
+        .theme-1 { background: linear-gradient(135deg, #6f42c1 0%, #2c3e50 100%); }
+        .theme-2 { background: linear-gradient(135deg, #ff6b6b 0%, #2c3e50 100%); }
+        .theme-3 { background: linear-gradient(135deg, #2ecc71 0%, #2c3e50 100%); }
+        .theme-4 { background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%); }
+        
+        .theme-name {
+            text-align: center;
+            margin-top: 8px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-paint-brush"></i> Personnalisation de Portfolio</h1>
+            <p>Guide complet pour personnaliser votre site GitHub Pages</p>
+        </header>
+        
+        <div class="content">
+            <div>
+                <div class="section">
+                    <h2><i class="fas fa-edit"></i> Édition de Base</h2>
+                    
+                    <div class="step">
+                        <h3><span class="step-number">1</span> Accéder au fichier</h3>
+                        <p>Pour modifier votre site :</p>
+                        <ol>
+                            <li>Allez sur <a href="https://github.com/Yiadh/Yiadh.github.io" target="_blank">votre repository GitHub</a></li>
+                            <li>Cliquez sur le fichier <code>index.html</code></li>
+                            <li>Cliquez sur l'icône <i class="fas fa-pencil-alt"></i> (éditer)</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="step">
+                        <h3><span class="step-number">2</span> Modifier le contenu</h3>
+                        <p>Recherchez ces sections dans le code :</p>
+                        
+                        <div class="editable">
+                            <h4><i class="fas fa-user"></i> Section À propos</h4>
+                            <code>&lt;h2>Développeur Web Fullstack&lt;/h2>
+&lt;p>Je suis un développeur web avec 3 ans d'expérience...&lt;/p></code>
+                            <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+                        </div>
+                        
+                        <div class="editable">
+                            <h4><i class="fas fa-envelope"></i> Coordonnées</h4>
+                            <code>&lt;span>contact@yiadh.fr&lt;/span>
+&lt;span>+33 6 12 34 56 78&lt;/span></code>
+                            <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <h3><span class="step-number">3</span> Sauvegarder les modifications</h3>
+                        <p>Après avoir fait vos modifications :</p>
+                        <ol>
+                            <li>Descendez en bas de la page</li>
+                            <li>Ajoutez un titre descriptif pour votre modification</li>
+                            <li>Cliquez sur le bouton <strong>"Commit changes"</strong></li>
+                            <li>Attendez 1-2 minutes pour que le site se mette à jour</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2><i class="fas fa-palette"></i> Personnalisation Avancée</h2>
+                    
+                    <h3>Changer les couleurs</h3>
+                    <p>Modifiez les variables CSS en haut du fichier :</p>
+                    
+                    <div class="color-palette">
+                        <div class="color-item" style="background: #6f42c1;" onclick="updateColor('#6f42c1', '--primary')">
+                            #6f42c1
+                            <small>Primaire</small>
+                        </div>
+                        <div class="color-item" style="background: #2c3e50;" onclick="updateColor('#2c3e50', '--secondary')">
+                            #2c3e50
+                            <small>Secondaire</small>
+                        </div>
+                        <div class="color-item" style="background: #ff6b6b;" onclick="updateColor('#ff6b6b', '--accent')">
+                            #ff6b6b
+                            <small>Accent</small>
+                        </div>
+                        <div class="color-item" style="background: #2ecc71;" onclick="updateColor('#2ecc71', '--success')">
+                            #2ecc71
+                            <small>Succès</small>
+                        </div>
+                    </div>
+                    
+                    <code>:root {
+  --primary: #6f42c1;    /* Couleur principale */
+  --secondary: #2c3e50;  /* Couleur secondaire */
+  --accent: #ff6b6b;     /* Couleur d'accent */
+  --success: #2ecc71;    /* Couleur de succès */
+}</code>
+                    <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+
+                    <h3>Modifier la photo de profil</h3>
+                    <p>Remplacez l'URL dans la section À propos :</p>
+                    <code>&lt;img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3..." 
+     alt="Photo de Yiadh"></code>
+                    <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+                    
+                    <div class="code-explanation">
+                        <p><strong>Conseil :</strong> Utilisez <a href="https://unsplash.com" target="_blank">Unsplash</a> pour trouver des images libres de droits, ou uploader la vôtre sur un service comme <a href="https://imgur.com" target="_blank">Imgur</a>.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <div class="section">
+                    <h2><i class="fas fa-cogs"></i> Sections à Personnaliser</h2>
+                    
+                    <div class="tab-container">
+                        <div class="tabs">
+                            <div class="tab active" data-tab="hero">Héro</div>
+                            <div class="tab" data-tab="about">À propos</div>
+                            <div class="tab" data-tab="skills">Compétences</div>
+                            <div class="tab" data-tab="projects">Projets</div>
+                            <div class="tab" data-tab="contact">Contact</div>
+                        </div>
+                        
+                        <div class="tab-content active" id="hero">
+                            <p>Section d'introduction en haut de page :</p>
+                            <code>&lt;h1>Bonjour, je suis &lt;span>Yiadh&lt;/span>&lt;/h1>
+&lt;p>Développeur web passionné par la création...&lt;/p></code>
+                            <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+                        </div>
+                        
+                        <div class="tab-content" id="about">
+                            <p>Section de présentation personnelle :</p>
+                            <code>&lt;h2>Développeur Web Fullstack&lt;/h2>
+&lt;p>Je suis un développeur web avec 3 ans d'expérience...&lt;/p>
+&lt;p>J'aime résoudre des problèmes complexes...&lt;/p></code>
+                            <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+                        </div>
+                        
+                        <div class="tab-content" id="skills">
+                            <p>Liste de vos compétences techniques :</p>
+                            <code>&lt;div class="skill-item">
+  &lt;div class="skill-icon">
+    &lt;i class="fab fa-html5">&lt;/i>
+  &lt;/div>
+  &lt;h3>HTML5&lt;/h3>
+  &lt;p>Création de structures sémantiques...&lt;/p>
+&lt;/div></code>
+                            <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+                        </div>
+                        
+                        <div class="tab-content" id="projects">
+                            <p>Présentation de vos projets :</p>
+                            <code>&lt;div class="project-card">
+  &lt;h3>Application E-commerce&lt;/h3>
+  &lt;p>Plateforme complète de vente en ligne...&lt;/p>
+  &lt;div class="project-tags">
+    &lt;span class="project-tag">React&lt
